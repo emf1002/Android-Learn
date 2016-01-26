@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.anzxy.learnandroid.fragmentlifecycle.FragmentA;
 import com.anzxy.learnandroid.fragmentlifecycle.FragmentB;
 import com.anzxy.learnandroid.fragmentlifecycle.LifecycleFragment;
+import com.anzxy.learnandroid.touchevent.TouchEventFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.main_content_layout, new LifecycleFragment());
-        transaction.addToBackStack(null).commit();
+        transaction.commit();
 
     }
 
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -83,14 +83,29 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         switch (id){
             case R.id.learn_fragment:
-
+                replaceFragment(new LifecycleFragment());
+                break;
+            case R.id.touch_event:
+                replaceFragment(new TouchEventFragment());
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+
+        if(fragmentManager.findFragmentByTag(fragment.getClass().getSimpleName()) != null){
+            return;
+        }
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.main_content_layout, fragment, fragment.getClass().getSimpleName());
+        transaction.commit();
     }
 }

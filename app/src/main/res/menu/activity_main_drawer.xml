@@ -4,6 +4,9 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/learn_fragment"
-            android:title="@string/fragment" />
+            android:title="Fragment生命周期" />
+        <item
+            android:id="@+id/touch_event"
+            android:title="TouchEvent演示" />
     </group>
 </menu>
