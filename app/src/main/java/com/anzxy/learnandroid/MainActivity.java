@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.anzxy.learnandroid.fragmentlifecycle.FragmentA;
 import com.anzxy.learnandroid.fragmentlifecycle.FragmentB;
+import com.anzxy.learnandroid.fragmentlifecycle.LifecycleFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,10 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.main_content_layout,new FragmentA(),"fragment_a");
-        Fragment fragmentB = new FragmentB();
-        transaction.add(R.id.main_content_layout, fragmentB, "fragment_b");
-        transaction.hide(fragmentB);
+        transaction.add(R.id.main_content_layout, new LifecycleFragment());
         transaction.addToBackStack(null).commit();
 
     }
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+           this.finish();
         }
     }
 
