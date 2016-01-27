@@ -9,10 +9,31 @@ import android.view.ViewGroup;
 
 import com.anzxy.learnandroid.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 周强 on 2016/1/26.
  */
 public class TouchEventFragment extends Fragment {
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        List<Fragment> fragmentList;
+
+        fragmentList = new ArrayList<>();
+       // fragmentList.add(new MainContentFragment());
+       // fragmentList.add(new MainHotFragment());
+
+        List<String> titleList = new ArrayList<>();
+
+        titleList.add("事件传递");
+        titleList.add("事件冲突");
+
+
+    }
 
     @Nullable
     @Override
