@@ -13,7 +13,7 @@ import com.anzxy.learnandroid.util.L;
 /**
  * Created by 周强 on 2016/1/26.
  */
-public class TouchView extends View {
+public class TouchInterceptView extends View {
 
     private final String tag = this.getClass().getSimpleName();
 
@@ -23,11 +23,11 @@ public class TouchView extends View {
     private int centerY;
     private int r;
 
-    public TouchView(Context context) {
+    public TouchInterceptView(Context context) {
         super(context);
     }
 
-    public TouchView(Context context, AttributeSet attrs) {
+    public TouchInterceptView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mPaint.setColor(Color.RED);
         centerX = 200;
@@ -35,7 +35,7 @@ public class TouchView extends View {
         r = 50;
     }
 
-    public TouchView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TouchInterceptView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -56,9 +56,6 @@ public class TouchView extends View {
         switch (action){
             case MotionEvent.ACTION_DOWN:
                 result = (Math.pow(x-centerX,2)+Math.pow(y-centerY,2))<=Math.pow(r,2);
-                if(result) {
-                    this.getParent().requestDisallowInterceptTouchEvent(true);
-                }
                 L.i(tag,"onTouchEvent:ACTION_DOWN："+result);
                 break;
             case MotionEvent.ACTION_MOVE:
