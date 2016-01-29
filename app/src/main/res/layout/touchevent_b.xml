@@ -10,6 +10,8 @@
         <com.anzxy.learnandroid.touchevent.TouchInterceptView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:translationX="15dp"
             android:background="@drawable/touchevent_view_bg"/>
 
     </com.anzxy.learnandroid.touchevent.FrameLayoutB>

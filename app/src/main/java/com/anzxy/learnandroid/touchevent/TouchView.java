@@ -64,22 +64,21 @@ public class TouchView extends View {
             case MotionEvent.ACTION_MOVE:
                 L.i(tag,"ACTION_MOVE");
 
-                final int top = this.getTop();
-                final int left = this.getLeft();
-                final int right = this.getRight();
-                final int bottom = this.getBottom();
+
+                final int right = this.getWidth();
+                final int bottom = this.getHeight();
 
                 //边界判定
-                if(x - r< left){
-                    centerX = left + r;
+                if(x - r< 0){
+                    centerX = r;
                 } else if(x + r > right){
                     centerX = right -r;
                 } else {
                     centerX = (int)x;
                 }
 
-                if(y - r < top){
-                    centerY = top+r;
+                if(y - r < 0){
+                    centerY = r;
                 } else if(y + r > bottom){
                     centerY = bottom - r;
                 } else {
